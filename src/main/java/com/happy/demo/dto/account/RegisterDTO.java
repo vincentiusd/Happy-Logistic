@@ -3,12 +3,13 @@ package com.happy.demo.dto.account;
 
 import javax.validation.constraints.NotBlank;
 
+
 public class RegisterDTO {
 
     @NotBlank(message = "Field is required")
     private String username;
 
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "Field is required")
     private String name;
 
     @NotBlank(message = "Field is required")
@@ -18,10 +19,10 @@ public class RegisterDTO {
     private  String phone;
 
 
-    @NotBlank(message = "Password is required")
+    @NotBlank(message = "Field is required")
     private String password;
 
-    @NotBlank(message = "Password Confirmation is required")
+    @NotBlank(message = "Field is required")
     private String passwordConfirmation;
 
     public RegisterDTO() {

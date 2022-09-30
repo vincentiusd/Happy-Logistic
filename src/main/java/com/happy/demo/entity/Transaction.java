@@ -25,8 +25,7 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(Long id, String type, Customer customer, Inventory inventory) {
-        this.id = id;
+    public Transaction( String type, Customer customer, Inventory inventory) {
         this.type = type;
         this.customer = customer;
         this.inventory = inventory;

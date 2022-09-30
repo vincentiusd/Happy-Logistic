@@ -13,10 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
@@ -37,7 +34,6 @@ public class AccountRestController {
     private JwtToken jwtToken;
 
     //login to the web app using username and password
-    @PreAuthorize("permitAll()")
     @PostMapping("/login")
     public ResponseTokenDTO login(
             @RequestBody RequestTokenDTO dto){
@@ -68,7 +64,6 @@ public class AccountRestController {
     }
 
     //register to the web app as a customer
-    @PreAuthorize("permitAll()")
     @PostMapping("/register")
     public ResponseEntity<Object> addAccount(@Valid @RequestBody RegisterDTO dto){
 
@@ -76,8 +71,6 @@ public class AccountRestController {
 
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
-
-
 
 
 }

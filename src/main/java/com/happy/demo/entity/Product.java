@@ -28,10 +28,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, String type) {
-        this.id = id;
+    public Product(String name, String type, Customer customer, Inventory inventory) {
         this.name = name;
         this.type = type;
+        this.customer = customer;
+        this.inventory = inventory;
     }
 
     public String getName() {

@@ -25,7 +25,9 @@ public class RestSecurityConfig {
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
         http.antMatcher("/api/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/login").permitAll()
+                .antMatchers("/api/login", "/api/register").permitAll()
+                .antMatchers("/api/customers/**", "/api/inventories/**").hasAuthority("Admin")
+                .antMatchers("/api/products/**", "/api/transactions/**").hasAuthority("Customer")
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

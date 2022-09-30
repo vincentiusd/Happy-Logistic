@@ -7,4 +7,8 @@ import org.springframework.data.domain.Pageable;
 public interface CustomerService {
 
     Page<CustomerGridDTO> findAllDTO(Pageable pageable);
+
+    CustomerGridDTO getCustomerDTO(long id);
+
+    void deleteById(long id);
 }

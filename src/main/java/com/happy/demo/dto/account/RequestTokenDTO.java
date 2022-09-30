@@ -8,11 +8,14 @@ public class RequestTokenDTO {
 
     private String password;
 
-    private String subject;
+    @JsonIgnore
+    private String subject = "User";
 
-    private String secretKey;
+    @JsonIgnore
+    private String secretKey = "Animus-est-sicut lux-solis-Cum-in-eo-sit-omnia-revelat";
 
-    private String audience;
+    @JsonIgnore
+    private String audience = "HappyLogisticWebUI";
 
     public RequestTokenDTO(){}
 

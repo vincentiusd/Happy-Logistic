@@ -6,14 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    //SELECT new indocyber.exam.dto.admin.AdminGridDTO(acc.username, ad.jobTitle)
-    //            FROM Admin ad
-    //            JOIN ad.account acc
 
-    //Long id, String username, String name, String phone, String address
 
     @Query("""
             SELECT new com.happy.demo.dto.customer.CustomerGridDTO(cus.id, acc.username, cus.name, cus.phone, cus.address)
@@ -21,4 +19,23 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             JOIN cus.account acc
             """)
     public Page<CustomerGridDTO> findAllDTOPage(Pageable pageable);
+
+
+
+    @Query("""
+            SELECT new com.happy.demo.dto.customer.CustomerGridDTO(cus.id, acc.username, cus.name, cus.phone, cus.address)
+            FROM Customer cus
+            JOIN cus.account acc
+            WHERE cus.id = :id
+            """)
+    public CustomerGridDTO findDTOById(@Param("id") long id);
+
+    @Query("select c from Customer c where c.account.username = ?1")
+    Customer findByUsername(String username);
+
+
+
+
+
+
 }

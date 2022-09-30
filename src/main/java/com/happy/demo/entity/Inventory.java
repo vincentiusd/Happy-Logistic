@@ -20,8 +20,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(Long id, String type, BigDecimal price) {
-        this.id = id;
+    public Inventory(String type, BigDecimal price) {
         this.type = type;
         this.rent = price;
     }

@@ -1,6 +1,6 @@
 package com.happy.demo.dto.customer;
 
-import javax.persistence.Column;
+
 
 public class CustomerGridDTO {
 
@@ -24,6 +24,7 @@ public class CustomerGridDTO {
         this.phone = phone;
         this.address = address;
     }
+
 
 
     public Long getId() {
