@@ -1,38 +1,30 @@
-package com.happy.demo.entity;
+package com.happy.demo.dto.customer;
 
-import javax.persistence.*;
-import java.util.LinkedList;
+import javax.persistence.Column;
 
-@Entity
-@Table(name = "Customer")
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+public class CustomerGridDTO {
+
     private Long id;
 
-    @Column(name = "Name")
+    private String username;
+
     private String name;
 
-    @Column(name = "PhoneNumber", length = 20)
     private String phone;
 
-    @Column(name = "Address")
     private String address;
 
-    @OneToOne
-    @JoinColumn(name = "Username")
-    private Account account;
-
-    public Customer() {
+    public CustomerGridDTO() {
     }
 
-    public Customer(String name, String phone, String address, Account account) {
+    public CustomerGridDTO(Long id, String username, String name, String phone, String address) {
+        this.id = id;
+        this.username = username;
         this.name = name;
         this.phone = phone;
         this.address = address;
-        this.account = account;
     }
+
 
     public Long getId() {
         return id;
@@ -40,6 +32,14 @@ public class Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -64,13 +64,5 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 }

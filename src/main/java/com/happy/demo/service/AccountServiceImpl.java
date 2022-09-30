@@ -3,6 +3,7 @@ package com.happy.demo.service;
 import com.happy.demo.ApplicationUserDetails;
 import com.happy.demo.dto.account.RegisterDTO;
 import com.happy.demo.entity.Account;
+import com.happy.demo.entity.Customer;
 import com.happy.demo.repository.AccountRepository;
 import com.happy.demo.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,25 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
     public void register(RegisterDTO dto) {
         String passwordEncrypt = passwordEncoder.encode(dto.getPassword());
 
+
+
         Account account = new Account(
+                dto.getUsername(),
+                passwordEncrypt,
+                "Customer"
         );
+
+        accountRepository.save(account);
+
+        //String name, String phone, String address, Account account
+        Customer customer = new Customer(
+                dto.getName(),
+                dto.getPhone(),
+                dto.getAddress(),
+                account
+        );
+
+        customerRepository.save(customer);
 
 
     }

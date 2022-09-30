@@ -8,6 +8,7 @@ import com.happy.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -36,6 +37,7 @@ public class AccountRestController {
     private JwtToken jwtToken;
 
     //login to the web app using username and password
+    @PreAuthorize("permitAll()")
     @PostMapping("/login")
     public ResponseTokenDTO login(
             @RequestBody RequestTokenDTO dto){
@@ -66,6 +68,7 @@ public class AccountRestController {
     }
 
     //register to the web app as a customer
+    @PreAuthorize("permitAll()")
     @PostMapping("/register")
     public ResponseEntity<Object> addAccount(@Valid @RequestBody RegisterDTO dto){
 
